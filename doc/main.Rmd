@@ -35,7 +35,7 @@ setwd("/Users/qinqingao/Documents/GitHub/image-classification/doc")
 
 Now we provide directories for the raw images. Here we assume the training set and test set are in different subfolders. 
 ```{r}
-experiment_dir <- "../data/train_select/" # This will be modified for different data sets.
+experiment_dir <- "/Users/qinqingao/Documents/GitHub/image-classification/data/" # This will be modified for different data sets.
 img_train_dir  <- paste(experiment_dir, "train/", sep="")
 img_test_dir   <- paste(experiment_dir, "test/", sep="")
 ```
@@ -71,7 +71,7 @@ For the example of zip code digits, we code Dog as "1" and Cat as "0" for binary
 
 ```{r train_label}
 label_train <- read.table(paste(experiment_dir, "train_label.txt", sep = ""), header = F)
-label_train <- as.numeric(unlist(label_train) == "Dog")
+label_train <- as.numeric(unlist(label_train) == "dog")
 ```
 
 ### Step 3: Construct visual features
@@ -85,14 +85,12 @@ source("../lib/feature.R")
 
 tm_feature_train <- NA
 if(run.feature.train){
-  tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "train", 
-                                                       data_name = "zip", export = TRUE))
+  tm_feature_train <- system.time(dat_train <- feature(img_train_dir, "train", data_name = "pet", export = TRUE))
 }
 
 tm_feature_test <- NA
 if(run.feature.test){
-  tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "test", 
-                                                     data_name = "zip", export = TRUE))
+  tm_feature_test <- system.time(dat_test <- feature(img_test_dir, "test", data_name = "pet", export = TRUE))
 }
 
 #save(dat_train, file = "../output/feature_train.RData")
@@ -177,7 +175,7 @@ Feed the final training model with the test data.  (Note that for this to truly 
 ```{r test}
 tm_test <- NA
 if(run.test){
-  load(file = paste0("../output/feature_", "zip", "_", "test", ".RData"))
+  load(file = paste0("../output/feature_", "pet", "_", "test", ".RData"))
   load(file = "../output/fit_train.RData")
   tm_test <- system.time(pred_test <- test(fit_train, dat_test))
   save(pred_test, file = "../output/pred_test.RData")

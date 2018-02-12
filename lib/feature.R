@@ -20,14 +20,14 @@ feature <- function(img_dir, set_name, data_name="data", export=T){
   n_files <- length(list.files(img_dir))
   
   ### determine img dimensions
-  img0 <-  readImage(paste0(img_dir, "img", "_", data_name, "_", set_name, "_", 1, ".jpg"))
+  img0 <-  readImage(paste0(img_dir, data_name, 1, ".jpg"))
   mat1 <- as.matrix(img0)
   n_r  <- nrow(img0)
   
   ### store vectorized pixel values of images
   dat <- matrix(NA, n_files, n_r) 
   for(i in 1:n_files){
-    img     <- readImage(paste0(img_dir,  "img", "_", data_name, "_", set_name, "_", i, ".jpg"))
+    img     <- readImage(paste0(img_dir, data_name, i, ".jpg"))
     dat[i,] <- rowMeans(img)
   }
   
