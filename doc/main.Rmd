@@ -1,5 +1,5 @@
 ---
-title: "Project 2 - Image Classification: Cats vs Dogs"
+title: 'Project 2 - Image Classification: Cats vs Dogs'
 author: "Ginny Gao"
 date: "February 11, 2018"
 output:
