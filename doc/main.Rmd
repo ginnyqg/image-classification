@@ -3,8 +3,8 @@ title: 'Project 2 - Image Classification: Cats vs Dogs'
 author: "Ginny Gao"
 date: "February 11, 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 In your final Project 2 repo, there should be an R markdown file called `main.Rmd` that organizes **all computational steps** for evaluating your proposed image classification framework. 
 
@@ -20,8 +20,13 @@ if(!require("gbm")){
   install.packages("gbm")
 }
 
+if(!require("randomForest")){
+  install.packages("randomForest")
+}
+
 library("EBImage")
 library("gbm")
+library("randomForest")
 ```
 
 ### Step 0: Specify directories.
@@ -29,13 +34,13 @@ library("gbm")
 We first set the working directory to the location of this .Rmd file  (it should be in a project folder). Then we specify our training and testing data. If you do not have an independent test set, you need to create your own testing data by random subsampling from the training data (we haven't done this here), and in order to obain reproducible results, you should use `set.seed()` whenever randomization is used. 
 
 ```{r wkdir, eval=FALSE}
-setwd("/Users/qinqingao/Documents/GitHub/image-classification/doc") 
+setwd("/Users/qinqingao/Documents/GitHub/project-2-predictive-modelling-group-5/doc")
 # Replace the above with your own path or manually set it in RStudio to where this rmd file is located. 
 ```
 
 Now we provide directories for the raw images. Here we assume the training set and test set are in different subfolders. 
 ```{r}
-experiment_dir <- "/Users/qinqingao/Documents/GitHub/image-classification/data/" # This will be modified for different data sets.
+experiment_dir <- "/Users/qinqingao/Documents/GitHub/project-2-predictive-modelling-group-5/data/" # This will be modified for different data sets.
 img_train_dir  <- paste(experiment_dir, "train/", sep="")
 img_test_dir   <- paste(experiment_dir, "test/", sep="")
 ```
@@ -58,7 +63,7 @@ run.test          <- TRUE # run evaluation on an independent test set
 run.feature.test  <- TRUE # process features for test set
 ```
 
-Using cross-validation or independent test set evaluation, we compare the performance of different classifiers. In this example, we use GBM with different `depth`. In the following code chunk, we list, in a vector, setups (in this case, `depth`) corresponding to model parameters that we will compare. In your project, you will likely be comparing different classifiers than the one considered here and therefore will need to expand this code. You could, for example, assign them numerical IDs and labels specific to your project. 
+Using cross-validation or independent test set evaluation, we compare the performance of different classifiers. In this example, we use GBM with different `depth`, and other algorithms. In the following code chunk, we list, in a vector, setups (in this case, `depth`) corresponding to model parameters that we will compare. In your project, you will likely be comparing different classifiers than the one considered here and therefore will need to expand this code. You could, for example, assign them numerical IDs and labels specific to your project. 
 
 ```{r model_setup}
 model_values <- seq(3, 11, 2)
@@ -67,7 +72,7 @@ model_labels <- paste("GBM with depth =", model_values)
 
 ### Step 2: Import training images class labels.
 
-For the example of zip code digits, we code Dog as "1" and Cat as "0" for binary classification.
+We code Dog as "1" and Cat as "0" for binary classification.
 
 ```{r train_label}
 label_train <- read.table(paste(experiment_dir, "train_label.txt", sep = ""), header = F)
@@ -76,7 +81,7 @@ label_train <- as.numeric(unlist(label_train) == "dog")
 
 ### Step 3: Construct visual features
 
-For this simple example, we use the row averages of raw pixel values as the visual features. Note that this strategy **only** works for images with the same number of rows. For some other image datasets, the feature function should be able to handle heterogeneous input images. Save the constructed features to the output subfolder.
+For this example, we use SIFT as the visual features. The feature function should be able to handle heterogeneous input images. Save the constructed features to the output subfolder.
 
 `feature.R` should be the wrapper for all your feature engineering functions and options. The function `feature( )` should have options that correspond to different scenarios for your project and produces an R object that contains features that are required by all the models you are going to evaluate later. 
 
