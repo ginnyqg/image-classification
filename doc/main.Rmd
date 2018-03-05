@@ -187,6 +187,17 @@ if(run.test){
 }
 ```
 
+
+### Summarize Accuracy
+```{r accuracy}
+label_test <- read.table(paste(experiment_dir, "test_label.txt", sep = ""), header = F)
+label_test <- as.numeric(unlist(label_test) == "dog")
+
+library(caret)
+confusionMatrix(get(load('/Users/qinqingao/Documents/GitHub/project-2-predictive-modelling-group-5/output/pred_test.RData')), label_test)$overall['Accuracy']
+```
+
+
 ### Summarize Running Time
 
 Prediction performance matters, so does the running times for constructing features and for training the model, especially when the computation resource is limited. 
