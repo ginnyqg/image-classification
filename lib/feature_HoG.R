@@ -6,6 +6,9 @@
 ### Project 2
 ### ADS Spring 2018
 
+#HOG feature
+
+
 feature <- function(img_dir, set_name, data_name = "data", export=T){
   
   ### Construct process features for training/testing images
@@ -31,7 +34,7 @@ feature <- function(img_dir, set_name, data_name = "data", export=T){
   ######################### CHANGE THIS VARIABLE #########################
   #set the starting pet image number in test_features_dir
 
-  test_start = 1601
+  test_start = 1801
 
   ########################################################################
 

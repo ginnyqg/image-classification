@@ -17,7 +17,7 @@ library(ppls)
 ######################### CHANGE THIS VARIABLE #########################
 #set the starting pet image number in test_features_dir
 
-test_start = 1601
+test_start = 1801
 
 ########################################################################
 
