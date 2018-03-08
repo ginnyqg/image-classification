@@ -30,7 +30,7 @@ hog = cv2$HOGDescriptor(winSize, blockSize, blockStride, cellSize, nbins)
 ######################### CHANGE THIS VARIABLE #########################
 #set the starting pet image number in test_features_dir
 
-test_start = 1601
+test_start = 1801
 
 ########################################################################
 
@@ -46,7 +46,7 @@ n_files <- length(list.files(img_dir))
 load(paste(train_features_dir, 'pet', 1, '.jpg.sift.Rdata', sep = ''))
 
 set.seed(1234)
-bof <- kmeans(features, 20, iter.max = 20)
+bof <- kmeans(features, 40, iter.max = 20)
 
 dat1 <- cbind(normalize.vector(t(bof$centers[1, ])), 
              normalize.vector(t(bof$centers[2, ])),
@@ -67,13 +67,33 @@ dat1 <- cbind(normalize.vector(t(bof$centers[1, ])),
              normalize.vector(t(bof$centers[17, ])),
              normalize.vector(t(bof$centers[18, ])),
              normalize.vector(t(bof$centers[19, ])),
-             normalize.vector(t(bof$centers[20, ]))
+             normalize.vector(t(bof$centers[20, ])),
+             normalize.vector(t(bof$centers[21, ])),
+             normalize.vector(t(bof$centers[22, ])),
+             normalize.vector(t(bof$centers[23, ])),
+             normalize.vector(t(bof$centers[24, ])),
+             normalize.vector(t(bof$centers[25, ])),
+             normalize.vector(t(bof$centers[26, ])),
+             normalize.vector(t(bof$centers[27, ])),
+             normalize.vector(t(bof$centers[28, ])),
+             normalize.vector(t(bof$centers[29, ])),
+             normalize.vector(t(bof$centers[30, ])),
+             normalize.vector(t(bof$centers[31, ])),
+             normalize.vector(t(bof$centers[32, ])),
+             normalize.vector(t(bof$centers[33, ])),
+             normalize.vector(t(bof$centers[34, ])),
+             normalize.vector(t(bof$centers[35, ])),
+             normalize.vector(t(bof$centers[36, ])),
+             normalize.vector(t(bof$centers[37, ])),
+             normalize.vector(t(bof$centers[38, ])),
+             normalize.vector(t(bof$centers[39, ])),
+             normalize.vector(t(bof$centers[40, ]))
             )
 
 for (i in 2 : n_files) {
     	load(paste(train_features_dir, 'pet', i, '.jpg.sift.Rdata', sep = ''))
         set.seed(1234)
-        bof <- kmeans(features, 20, iter.max = 20)
+        bof <- kmeans(features, 40, iter.max = 20)
     	dat1 <- rbind(dat1, cbind(normalize.vector(t(bof$centers[1, ])), 
                                 normalize.vector(t(bof$centers[2, ])),
                                 normalize.vector(t(bof$centers[3, ])),
@@ -93,7 +113,27 @@ for (i in 2 : n_files) {
                                 normalize.vector(t(bof$centers[17, ])),
                                 normalize.vector(t(bof$centers[18, ])),
                                 normalize.vector(t(bof$centers[19, ])),
-                                normalize.vector(t(bof$centers[20, ]))
+                                normalize.vector(t(bof$centers[20, ])),
+                                normalize.vector(t(bof$centers[21, ])),
+                                normalize.vector(t(bof$centers[22, ])),
+                                normalize.vector(t(bof$centers[23, ])),
+                                normalize.vector(t(bof$centers[24, ])),
+                                normalize.vector(t(bof$centers[25, ])),
+                                normalize.vector(t(bof$centers[26, ])),
+                                normalize.vector(t(bof$centers[27, ])),
+                                normalize.vector(t(bof$centers[28, ])),
+                                normalize.vector(t(bof$centers[29, ])),
+                                normalize.vector(t(bof$centers[30, ])),
+                                normalize.vector(t(bof$centers[31, ])),
+                                normalize.vector(t(bof$centers[32, ])),
+                                normalize.vector(t(bof$centers[33, ])),
+                                normalize.vector(t(bof$centers[34, ])),
+                                normalize.vector(t(bof$centers[35, ])),
+                                normalize.vector(t(bof$centers[36, ])),
+                                normalize.vector(t(bof$centers[37, ])),
+                                normalize.vector(t(bof$centers[38, ])),
+                                normalize.vector(t(bof$centers[39, ])),
+                                normalize.vector(t(bof$centers[40, ]))
     	                       ))
 	}
 
@@ -119,7 +159,7 @@ n_files <- length(list.files(img_dir))
 load(paste(test_features_dir, 'pet', test_start, '.jpg.sift.Rdata', sep = ''))
 
 set.seed(1234)
-bof <- kmeans(features, 20, iter.max = 20)
+bof <- kmeans(features, 40, iter.max = 20)
 
 dat1 <- cbind(normalize.vector(t(bof$centers[1, ])), 
              normalize.vector(t(bof$centers[2, ])),
@@ -140,13 +180,33 @@ dat1 <- cbind(normalize.vector(t(bof$centers[1, ])),
              normalize.vector(t(bof$centers[17, ])),
              normalize.vector(t(bof$centers[18, ])),
              normalize.vector(t(bof$centers[19, ])),
-             normalize.vector(t(bof$centers[20, ]))
+             normalize.vector(t(bof$centers[20, ])),
+             normalize.vector(t(bof$centers[21, ])),
+             normalize.vector(t(bof$centers[22, ])),
+             normalize.vector(t(bof$centers[23, ])),
+             normalize.vector(t(bof$centers[24, ])),
+             normalize.vector(t(bof$centers[25, ])),
+             normalize.vector(t(bof$centers[26, ])),
+             normalize.vector(t(bof$centers[27, ])),
+             normalize.vector(t(bof$centers[28, ])),
+             normalize.vector(t(bof$centers[29, ])),
+             normalize.vector(t(bof$centers[30, ])),
+             normalize.vector(t(bof$centers[31, ])),
+             normalize.vector(t(bof$centers[32, ])),
+             normalize.vector(t(bof$centers[33, ])),
+             normalize.vector(t(bof$centers[34, ])),
+             normalize.vector(t(bof$centers[35, ])),
+             normalize.vector(t(bof$centers[36, ])),
+             normalize.vector(t(bof$centers[37, ])),
+             normalize.vector(t(bof$centers[38, ])),
+             normalize.vector(t(bof$centers[39, ])),
+             normalize.vector(t(bof$centers[40, ]))
              )
 
 for (i in (test_start + 1) : (test_start - 1 + n_files)) {
         load(paste(test_features_dir, 'pet', i, '.jpg.sift.Rdata', sep = ''))
         set.seed(1234)
-        bof <- kmeans(features, 20, iter.max = 20)
+        bof <- kmeans(features, 40, iter.max = 20)
         dat1 <- rbind(dat1, cbind(normalize.vector(t(bof$centers[1, ])), 
                                 normalize.vector(t(bof$centers[2, ])),
                                 normalize.vector(t(bof$centers[3, ])),
@@ -166,7 +226,27 @@ for (i in (test_start + 1) : (test_start - 1 + n_files)) {
                                 normalize.vector(t(bof$centers[17, ])),
                                 normalize.vector(t(bof$centers[18, ])),
                                 normalize.vector(t(bof$centers[19, ])),
-                                normalize.vector(t(bof$centers[20, ]))                                
+                                normalize.vector(t(bof$centers[20, ])),
+                                normalize.vector(t(bof$centers[21, ])),
+                                normalize.vector(t(bof$centers[22, ])),
+                                normalize.vector(t(bof$centers[23, ])),
+                                normalize.vector(t(bof$centers[24, ])),
+                                normalize.vector(t(bof$centers[25, ])),
+                                normalize.vector(t(bof$centers[26, ])),
+                                normalize.vector(t(bof$centers[27, ])),
+                                normalize.vector(t(bof$centers[28, ])),
+                                normalize.vector(t(bof$centers[29, ])),
+                                normalize.vector(t(bof$centers[30, ])),
+                                normalize.vector(t(bof$centers[31, ])),
+                                normalize.vector(t(bof$centers[32, ])),
+                                normalize.vector(t(bof$centers[33, ])),
+                                normalize.vector(t(bof$centers[34, ])),
+                                normalize.vector(t(bof$centers[35, ])),
+                                normalize.vector(t(bof$centers[36, ])),
+                                normalize.vector(t(bof$centers[37, ])),
+                                normalize.vector(t(bof$centers[38, ])),
+                                normalize.vector(t(bof$centers[39, ])),
+                                normalize.vector(t(bof$centers[40, ]))                               
                                 ))
     }
 
@@ -181,7 +261,6 @@ dat2[i - (test_start - 1), ] <- t(hog_values)
 dat <- cbind(dat1, dat2)
 
 }
-
 
 
 ### output constructed features
