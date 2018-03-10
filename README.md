@@ -8,8 +8,11 @@
  
 ### SIFT (Scale-Invariant Feature Transform) Process
  
- ![img](figs/SIFT_process.png)
+![img](figs/SIFT_process.png)
  
  
+### Performance comparison of different feature and model combination
+
+![img](figs/Perf_compare_2.png)
  
  
