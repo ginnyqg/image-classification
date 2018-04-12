@@ -4,9 +4,9 @@
  
 ![img](figs/dog_cat.png)
 
- + Baseline model: GBM with SIFT + HoG features    
+ + Baseline model: GBM with HoG features    
  
- + Proposed model: 
+ + Proposed model: SVM with HoG features, NN
 
 ### SIFT (Scale-Invariant Feature Transform) Process
  
