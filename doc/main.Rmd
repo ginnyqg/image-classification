@@ -24,9 +24,14 @@ if(!require("randomForest")){
   install.packages("randomForest")
 }
 
+if(!require("e1071")){
+  install.packages("e1071")
+}
+
 library("EBImage")
 library("gbm")
 library("randomForest")
+library("e1071")
 ```
 
 ### Step 0: Specify directories.
