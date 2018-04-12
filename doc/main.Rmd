@@ -28,10 +28,15 @@ if(!require("e1071")){
   install.packages("e1071")
 }
 
-library("EBImage")
-library("gbm")
-library("randomForest")
-library("e1071")
+if(!require("caret")){
+  install.packages("caret")
+}
+
+library(EBImage)
+library(gbm)
+library(randomForest)
+library(e1071)
+library(caret)
 ```
 
 ### Step 0: Specify directories.
